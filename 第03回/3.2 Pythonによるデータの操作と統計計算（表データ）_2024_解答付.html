@@ -14807,6 +14807,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Googleドライブへの接続</strong></p>
+<ul>
+<li>同期に関するチェックボタンが表示された場合、全てのチェックを入れる</li>
+</ul>
 
 </div>
 </div>
@@ -14882,7 +14885,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">xlsxfile</span>  <span class="o">=</span> <span class="s2">"dataset/都道府県別人口推移.xlsx"</span> <span class="c1"># dataset内のExcelファイル</span>
 
 <span class="c1"># Googleドライブの場合は次のコメントアウトを外す</span>
-<span class="c1"># xlsxfile = "drive/My Drive/Colab Notebooks/第03回_プログラム/dataset/都道府県別人口推移.xlsx""</span>
+<span class="c1"># xlsxfile = "drive/My Drive/Colab Notebooks/第03回_プログラム/dataset/都道府県別人口推移.xlsx"</span>
 
 <span class="c1"># データの読み込み</span>
 <span class="n">df_population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xlsxfile</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">"全データ"</span><span class="p">)</span>
@@ -15338,13 +15341,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <h2 id="%5B%E5%8F%82%E8%80%83%5D-Web%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E8%A1%A8%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97">[&#21442;&#32771;] Web&#12469;&#12452;&#12488;&#12398;&#34920;&#12487;&#12540;&#12479;&#12398;&#21462;&#24471;<a class="anchor-link" href="#%5B%E5%8F%82%E8%80%83%5D-Web%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E8%A1%A8%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97">&#182;</a></h2><ul>
 <li>read_htmlを用いて読み込む</li>
 <li>第1引数はWebサイトのurl</li>
-<li>encodingを間違えると文字化けするので注意(<code>utf-8</code>か<code>shift_jis</code>の可能性が高い)</li>
 <li>取得した表データはリスト型で格納される<ul>
 <li>Webサイトに複数の表がある場合は次のように格納されている: [表1, 表2,・・・]</li>
 <li>特定の表を取り出す場合はインデックス(要素番号)を指定</li>
 </ul>
 </li>
-<li><a href="https://baseball.yahoo.co.jp/npb/stats/batter?gameKindId=1&amp;type=avg">ここで扱うWebサイト</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E8%BF%91%E4%BB%A3%E3%82%AA%E3%83%AA%E3%83%B3%E3%83%94%E3%83%83%E3%82%AF%E3%81%A7%E3%81%AE%E5%9B%BD%E3%83%BB%E5%9C%B0%E5%9F%9F%E5%88%A5%E3%83%A1%E3%83%80%E3%83%AB%E7%B7%8F%E7%8D%B2%E5%BE%97%E6%95%B0%E4%B8%80%E8%A6%A7">ここで扱うWebサイト</a></li>
 </ul>
 
 </div>
@@ -15361,16 +15363,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1"># urlの設定</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://baseball.yahoo.co.jp/npb/stats/batter?gameKindId=1&amp;type=avg"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://ja.wikipedia.org/wiki/</span><span class="si">%E</span><span class="s2">8%BF</span><span class="si">%91%</span><span class="s2">E4%BB%A3</span><span class="si">%E</span><span class="s2">3</span><span class="si">%82%</span><span class="s2">AA</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">AA</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">B3</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">94</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">83</span><span class="si">%E</span><span class="s2">3</span><span class="si">%82%</span><span class="s2">AF</span><span class="si">%E</span><span class="s2">3</span><span class="si">%81%</span><span class="s2">A7</span><span class="si">%E</span><span class="s2">3</span><span class="si">%81%</span><span class="s2">AE</span><span class="si">%E</span><span class="s2">5%9B%BD</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">BB</span><span class="si">%E</span><span class="s2">5%9C%B0</span><span class="si">%E</span><span class="s2">5</span><span class="si">%9F%9F%E</span><span class="s2">5</span><span class="si">%88%</span><span class="s2">A5</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">A1</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">80</span><span class="si">%E</span><span class="s2">3</span><span class="si">%83%</span><span class="s2">AB</span><span class="si">%E</span><span class="s2">7%B7</span><span class="si">%8F%E</span><span class="s2">7%8D%B2</span><span class="si">%E</span><span class="s2">5%BE</span><span class="si">%97%</span><span class="s2">E6</span><span class="si">%95%</span><span class="s2">B0</span><span class="si">%E</span><span class="s2">4%B8</span><span class="si">%80%</span><span class="s2">E8%A6%A7"</span>
 
 <span class="c1"># 表データ取得</span>
 <span class="n">list_tables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span>
 
 <span class="c1"># インデックス(要素番号)0の表を取得</span>
-<span class="n">df_baseball</span> <span class="o">=</span> <span class="n">list_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_url</span> <span class="o">=</span> <span class="n">list_tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># 表示</span>
-<span class="n">display</span><span class="p">(</span><span class="n">df_baseball</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_url</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15403,593 +15405,252 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
         vertical-align: top;
     }
 
-    .dataframe thead th {
-        text-align: right;
+    .dataframe thead tr th {
+        text-align: left;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
-      <th>順　位</th>
-      <th>選手名</th>
-      <th>打　率</th>
-      <th>試　合</th>
-      <th>打　席</th>
-      <th>打　数</th>
-      <th>安　打</th>
-      <th>二塁打</th>
-      <th>三塁打</th>
-      <th>本塁打</th>
-      <th>...</th>
-      <th>犠　打</th>
-      <th>犠　飛</th>
-      <th>盗　塁</th>
-      <th>盗塁死</th>
-      <th>併殺打</th>
-      <th>出塁率</th>
-      <th>長打率</th>
-      <th>ＯＰＳ</th>
-      <th>得点圏</th>
-      <th>失　策</th>
+      <th>国・地域</th>
+      <th colspan="5" halign="left">夏季オリンピック</th>
+      <th colspan="5" halign="left">冬季オリンピック</th>
+      <th colspan="5" halign="left">合計</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>国・地域</th>
+      <th>No.</th>
+      <th>金</th>
+      <th>銀</th>
+      <th>銅</th>
+      <th>総数</th>
+      <th>No.</th>
+      <th>金</th>
+      <th>銀</th>
+      <th>銅</th>
+      <th>総数</th>
+      <th>No.</th>
+      <th>金</th>
+      <th>銀</th>
+      <th>銅</th>
+      <th>総数</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>サンタナ  (ヤ)</td>
-      <td>.309</td>
-      <td>82</td>
-      <td>319</td>
-      <td>278</td>
-      <td>86</td>
-      <td>21</td>
+      <td>アフガニスタン (AFG)</td>
+      <td>15</td>
       <td>0</td>
-      <td>11</td>
-      <td>...</td>
       <td>0</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>7</td>
-      <td>.389</td>
-      <td>.504</td>
-      <td>.892</td>
-      <td>.303</td>
-      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>オランダ領アンティル (AHO)</td>
+      <td>13</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
       <td>2</td>
-      <td>山本  (デ)</td>
-      <td>.2943</td>
-      <td>87</td>
-      <td>319</td>
-      <td>282</td>
-      <td>83</td>
-      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
       <td>1</td>
-      <td>3</td>
-      <td>...</td>
-      <td>8</td>
-      <td>6</td>
-      <td>1</td>
-      <td>1</td>
-      <td>8</td>
-      <td>.341</td>
-      <td>.369</td>
-      <td>.710</td>
-      <td>.289</td>
+      <td>0</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
+      <td>アルジェリア (ALG)</td>
+      <td>14</td>
+      <td>5</td>
+      <td>4</td>
+      <td>8</td>
+      <td>17</td>
       <td>3</td>
-      <td>細川  (中)</td>
-      <td>.2942</td>
-      <td>105</td>
-      <td>435</td>
-      <td>384</td>
-      <td>113</td>
-      <td>23</td>
       <td>0</td>
-      <td>15</td>
-      <td>...</td>
       <td>0</td>
-      <td>1</td>
       <td>0</td>
-      <td>1</td>
-      <td>12</td>
-      <td>.375</td>
-      <td>.471</td>
-      <td>.846</td>
-      <td>.300</td>
-      <td>2</td>
+      <td>0</td>
+      <td>17</td>
+      <td>5</td>
+      <td>4</td>
+      <td>8</td>
+      <td>17</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>オーストララシア (ANZ)</td>
+      <td>2</td>
+      <td>3</td>
       <td>4</td>
-      <td>丸  (巨)</td>
-      <td>.293</td>
-      <td>101</td>
-      <td>426</td>
-      <td>376</td>
-      <td>110</td>
+      <td>5</td>
       <td>12</td>
-      <td>1</td>
-      <td>9</td>
-      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>2</td>
-      <td>6</td>
       <td>3</td>
-      <td>6</td>
-      <td>.371</td>
-      <td>.402</td>
-      <td>.772</td>
-      <td>.267</td>
-      <td>0</td>
+      <td>4</td>
+      <td>5</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>野間  (広)</td>
-      <td>.292</td>
-      <td>79</td>
-      <td>324</td>
-      <td>288</td>
-      <td>84</td>
-      <td>10</td>
-      <td>4</td>
-      <td>1</td>
-      <td>...</td>
-      <td>3</td>
-      <td>0</td>
-      <td>6</td>
-      <td>5</td>
-      <td>3</td>
-      <td>.364</td>
-      <td>.365</td>
-      <td>.729</td>
-      <td>.308</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>宮﨑  (デ)</td>
-      <td>.2881</td>
-      <td>89</td>
-      <td>339</td>
-      <td>295</td>
-      <td>85</td>
-      <td>18</td>
-      <td>0</td>
-      <td>9</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>7</td>
-      <td>.378</td>
-      <td>.441</td>
-      <td>.818</td>
-      <td>.268</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7</td>
-      <td>長岡  (ヤ)</td>
-      <td>.2875</td>
-      <td>102</td>
-      <td>421</td>
-      <td>386</td>
-      <td>111</td>
+      <td>アルゼンチン (ARG)</td>
+      <td>25</td>
       <td>21</td>
-      <td>1</td>
-      <td>6</td>
-      <td>...</td>
-      <td>9</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>5</td>
-      <td>.325</td>
-      <td>.394</td>
-      <td>.719</td>
-      <td>.326</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8</td>
-      <td>佐野  (デ)</td>
-      <td>.284</td>
-      <td>100</td>
-      <td>404</td>
-      <td>373</td>
-      <td>106</td>
       <td>26</td>
-      <td>0</td>
-      <td>5</td>
-      <td>...</td>
-      <td>0</td>
-      <td>2</td>
+      <td>30</td>
+      <td>77</td>
+      <td>19</td>
       <td>0</td>
       <td>0</td>
-      <td>9</td>
-      <td>.334</td>
-      <td>.394</td>
-      <td>.728</td>
-      <td>.323</td>
-      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>44</td>
+      <td>21</td>
+      <td>26</td>
+      <td>30</td>
+      <td>77</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>9</td>
-      <td>小園  (広)</td>
-      <td>.283</td>
-      <td>99</td>
-      <td>407</td>
-      <td>371</td>
-      <td>105</td>
-      <td>9</td>
-      <td>3</td>
-      <td>1</td>
+      <th>...</th>
       <td>...</td>
-      <td>5</td>
-      <td>3</td>
-      <td>8</td>
-      <td>8</td>
-      <td>5</td>
-      <td>.331</td>
-      <td>.332</td>
-      <td>.662</td>
-      <td>.316</td>
-      <td>11</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>10</td>
-      <td>吉川  (巨)</td>
-      <td>.277</td>
-      <td>104</td>
-      <td>438</td>
-      <td>390</td>
-      <td>108</td>
+      <th>152</th>
+      <td>ユーゴスラビア (YUG)</td>
       <td>18</td>
-      <td>3</td>
-      <td>3</td>
-      <td>...</td>
-      <td>9</td>
-      <td>5</td>
-      <td>10</td>
-      <td>4</td>
-      <td>7</td>
-      <td>.331</td>
-      <td>.362</td>
-      <td>.693</td>
-      <td>.232</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>11</td>
-      <td>秋山  (広)</td>
-      <td>.276</td>
-      <td>96</td>
-      <td>405</td>
-      <td>377</td>
-      <td>104</td>
+      <td>28</td>
+      <td>31</td>
+      <td>31</td>
+      <td>90</td>
       <td>14</td>
       <td>0</td>
+      <td>3</td>
+      <td>1</td>
       <td>4</td>
-      <td>...</td>
+      <td>32</td>
+      <td>28</td>
+      <td>34</td>
+      <td>32</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>ザンビア (ZAM)</td>
+      <td>14</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
       <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>14</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>ジンバブエ (ZIM)</td>
+      <td>14</td>
       <td>3</td>
       <td>4</td>
-      <td>5</td>
-      <td>2</td>
-      <td>.315</td>
-      <td>.345</td>
-      <td>.660</td>
-      <td>.277</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>12</td>
-      <td>佐藤輝  (神)</td>
-      <td>.273</td>
-      <td>82</td>
-      <td>337</td>
-      <td>308</td>
-      <td>84</td>
-      <td>16</td>
       <td>1</td>
-      <td>9</td>
-      <td>...</td>
+      <td>8</td>
+      <td>1</td>
       <td>0</td>
-      <td>2</td>
       <td>0</td>
-      <td>2</td>
-      <td>6</td>
-      <td>.329</td>
-      <td>.419</td>
-      <td>.748</td>
-      <td>.338</td>
-      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>3</td>
+      <td>4</td>
+      <td>1</td>
+      <td>8</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>13</td>
-      <td>牧  (デ)</td>
-      <td>.269</td>
-      <td>93</td>
-      <td>395</td>
-      <td>361</td>
-      <td>97</td>
+      <th>155</th>
+      <td>混合チーム (ZZX)</td>
+      <td>3</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>合計</td>
+      <td>29</td>
+      <td>5463</td>
+      <td>5423</td>
+      <td>5896</td>
+      <td>16782</td>
       <td>23</td>
-      <td>0</td>
-      <td>17</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>9</td>
-      <td>0</td>
-      <td>11</td>
-      <td>.329</td>
-      <td>.474</td>
-      <td>.803</td>
-      <td>.208</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>14</td>
-      <td>近本  (神)</td>
-      <td>.2623</td>
-      <td>103</td>
-      <td>461</td>
-      <td>404</td>
-      <td>106</td>
-      <td>12</td>
-      <td>5</td>
-      <td>6</td>
-      <td>...</td>
-      <td>0</td>
-      <td>3</td>
-      <td>15</td>
-      <td>6</td>
-      <td>5</td>
-      <td>.347</td>
-      <td>.361</td>
-      <td>.708</td>
-      <td>.312</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>15</td>
-      <td>岡本和  (巨)</td>
-      <td>.2617</td>
-      <td>104</td>
-      <td>439</td>
-      <td>382</td>
-      <td>100</td>
-      <td>26</td>
-      <td>0</td>
-      <td>17</td>
-      <td>...</td>
-      <td>0</td>
-      <td>5</td>
-      <td>0</td>
-      <td>1</td>
-      <td>5</td>
-      <td>.346</td>
-      <td>.463</td>
-      <td>.810</td>
-      <td>.272</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>16</td>
-      <td>森下  (神)</td>
-      <td>.260</td>
-      <td>91</td>
-      <td>361</td>
-      <td>319</td>
-      <td>83</td>
-      <td>17</td>
-      <td>1</td>
-      <td>10</td>
-      <td>...</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>2</td>
-      <td>9</td>
-      <td>.341</td>
-      <td>.414</td>
-      <td>.755</td>
-      <td>.352</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>17</td>
-      <td>オスナ  (ヤ)</td>
-      <td>.258</td>
-      <td>102</td>
-      <td>420</td>
-      <td>387</td>
-      <td>100</td>
-      <td>19</td>
-      <td>0</td>
-      <td>13</td>
-      <td>...</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td>21</td>
-      <td>.312</td>
-      <td>.408</td>
-      <td>.720</td>
-      <td>.290</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>18</td>
-      <td>矢野  (広)</td>
-      <td>.253</td>
-      <td>93</td>
-      <td>322</td>
-      <td>277</td>
-      <td>70</td>
-      <td>9</td>
-      <td>5</td>
-      <td>0</td>
-      <td>...</td>
-      <td>15</td>
-      <td>3</td>
-      <td>9</td>
-      <td>8</td>
-      <td>4</td>
-      <td>.316</td>
-      <td>.321</td>
-      <td>.637</td>
-      <td>.316</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>19</td>
-      <td>大山  (神)</td>
-      <td>.2409</td>
-      <td>92</td>
-      <td>382</td>
-      <td>332</td>
-      <td>80</td>
-      <td>10</td>
-      <td>0</td>
-      <td>10</td>
-      <td>...</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>4</td>
-      <td>16</td>
-      <td>.335</td>
-      <td>.361</td>
-      <td>.697</td>
-      <td>.322</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>20</td>
-      <td>村上  (ヤ)</td>
-      <td>.2407</td>
-      <td>102</td>
-      <td>434</td>
-      <td>353</td>
-      <td>85</td>
-      <td>7</td>
-      <td>1</td>
-      <td>21</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>7</td>
-      <td>4</td>
-      <td>4</td>
-      <td>.380</td>
-      <td>.445</td>
-      <td>.825</td>
-      <td>.281</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>21</td>
-      <td>中野  (神)</td>
-      <td>.234</td>
-      <td>105</td>
-      <td>462</td>
-      <td>397</td>
-      <td>93</td>
-      <td>17</td>
-      <td>2</td>
-      <td>1</td>
-      <td>...</td>
-      <td>21</td>
-      <td>1</td>
-      <td>6</td>
-      <td>6</td>
-      <td>8</td>
-      <td>.308</td>
-      <td>.295</td>
-      <td>.603</td>
-      <td>.241</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>22</td>
-      <td>菊池  (広)</td>
-      <td>.221</td>
-      <td>95</td>
-      <td>349</td>
-      <td>317</td>
-      <td>70</td>
-      <td>11</td>
-      <td>0</td>
-      <td>6</td>
-      <td>...</td>
-      <td>12</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>9</td>
-      <td>.267</td>
-      <td>.312</td>
-      <td>.579</td>
-      <td>.143</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>順　位</td>
-      <td>選手名</td>
-      <td>打　率</td>
-      <td>試　合</td>
-      <td>打　席</td>
-      <td>打　数</td>
-      <td>安　打</td>
-      <td>二塁打</td>
-      <td>三塁打</td>
-      <td>本塁打</td>
-      <td>...</td>
-      <td>犠　打</td>
-      <td>犠　飛</td>
-      <td>盗　塁</td>
-      <td>盗塁死</td>
-      <td>併殺打</td>
-      <td>出塁率</td>
-      <td>長打率</td>
-      <td>ＯＰＳ</td>
-      <td>得点圏</td>
-      <td>失　策</td>
+      <td>1062</td>
+      <td>1059</td>
+      <td>1050</td>
+      <td>3171</td>
+      <td>52</td>
+      <td>6525</td>
+      <td>6482</td>
+      <td>6946</td>
+      <td>19953</td>
     </tr>
   </tbody>
 </table>
-<p>23 rows × 26 columns</p>
+<p>157 rows × 16 columns</p>
 </div>
 </div>
 
@@ -21449,7 +21110,7 @@ Name: 西暦（年）, Length: 939, dtype: bool</pre>
 <span class="n">xlsxfile</span>  <span class="o">=</span> <span class="s2">"dataset/boston.xlsx"</span> <span class="c1"># dataset内のExcelファイル</span>
 
 <span class="c1"># Googleドライブの場合は次のコメントアウトを外す</span>
-<span class="c1"># xlsxfile = "drive/My Drive/Colab Notebooks/第03回_プログラム/dataset/5教科成績.xlsx"</span>
+<span class="c1"># xlsxfile = "drive/My Drive/Colab Notebooks/第03回_プログラム/dataset/boston.xlsx"</span>
 
 <span class="c1"># データをpandasで読み込み</span>
 <span class="n">sheet</span>     <span class="o">=</span> <span class="s2">"boston"</span>
@@ -22703,8 +22364,9 @@ Name: count, dtype: int64</pre>
 
 <span class="c1"># ファイルの指定</span>
 <span class="n">xlsxfile</span>  <span class="o">=</span> <span class="s2">"dataset/販売データ.xlsx"</span> <span class="c1"># dataset内のExcelファイル</span>
+
 <span class="c1"># Googleドライブの場合は次のコメントアウトを外す</span>
-<span class="c1"># xlsxfile = "drive/My Drive/Colab Notebooks/第03回_プログラム/dataset/5教科成績.xlsx"</span>
+<span class="c1"># xlsxfile = "drive/My Drive/Colab Notebooks/第03回_プログラム/dataset/販売データ.xlsx"</span>
 
 <span class="c1"># データをpandasで読み込み</span>
 <span class="n">sheet</span>   <span class="o">=</span> <span class="s2">"実績管理表"</span>
